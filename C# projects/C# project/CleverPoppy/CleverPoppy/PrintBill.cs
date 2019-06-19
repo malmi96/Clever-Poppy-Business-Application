@@ -20,7 +20,9 @@ namespace CleverPoppy
         string ProductName;
         string ProductCode;
         int price, currentQty, purchaseQty, updatedQty, cost;
-
+        //string conn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30";
+        
+        string conn = dbClass.getString();
         private void PrintBill_Load(object sender, EventArgs e)
         {
             DisplayData();
@@ -44,8 +46,8 @@ namespace CleverPoppy
 
         private void btn_closeform_Click(object sender, EventArgs e)
         {
-           
-            SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30");
+            SqlConnection sqlcon = new SqlConnection(conn);
+            //SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30");
             string q = "Delete from Bill";
             SqlDataAdapter sdaA = new SqlDataAdapter(q, sqlcon);
             DataTable dtblA = new DataTable();
@@ -55,7 +57,8 @@ namespace CleverPoppy
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30");
+            SqlConnection sqlcon = new SqlConnection(conn);
+            //SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30");
             sqlcon.Open();
 
             string qry1 = "Select quantity from Bill where code ='" + txtCode.Text + "' or name='" + txtName.Text + "'";
@@ -126,7 +129,8 @@ namespace CleverPoppy
             if (purchaseQty <= currentQty)
             {
                 updatedQty = currentQty - purchaseQty;
-                SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30");
+                SqlConnection sqlcon = new SqlConnection(conn);
+                //SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30");
                 sqlcon.Open();
                 string query = "insert into Bill values('" + ProductCode + "','" + ProductName + "','" + purchaseQty + "','" + price + "','" + cost + "')";
                 SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
@@ -158,7 +162,8 @@ namespace CleverPoppy
 
         public void DisplayData()
         {
-            SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30");
+            SqlConnection sqlcon = new SqlConnection(conn);
+            //SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30");
             string query = "Select * from Bill";
             SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
             DataTable dtbl = new DataTable();
@@ -179,7 +184,8 @@ namespace CleverPoppy
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30");
+            SqlConnection sqlcon = new SqlConnection(conn);
+            //SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30");
             sqlcon.Open();
             String query = "Select * from Stock where code='" + txtCode.Text + "' or name = '" + txtName.Text + "'";
             SqlCommand cmd = new SqlCommand(query, sqlcon);

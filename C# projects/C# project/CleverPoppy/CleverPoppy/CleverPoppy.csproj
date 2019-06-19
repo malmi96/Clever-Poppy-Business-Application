@@ -61,6 +61,7 @@
     <Compile Include="CheckAvailability.Designer.cs">
       <DependentUpon>CheckAvailability.cs</DependentUpon>
     </Compile>
+    <Compile Include="dbClass.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

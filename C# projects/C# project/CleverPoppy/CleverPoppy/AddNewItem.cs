@@ -17,9 +17,12 @@ namespace CleverPoppy
         {
             InitializeComponent();
         }
+        string conn = dbClass.getString();
+        //string conn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30";
         public void DisplayData()
         {
-            SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30");
+            SqlConnection sqlcon = new SqlConnection(conn);
+            //SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30");
             string query = "Select * from Stock";
             SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
             DataTable dtbl = new DataTable();
@@ -54,7 +57,8 @@ namespace CleverPoppy
                 {
                     lblError.Text = "";
                     lblOk.Text = "";
-                    SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30");
+                    SqlConnection sqlcon = new SqlConnection(conn);
+                    //SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30");
                     string query = "insert into Stock values('" + txtCode.Text + "','" + txtName.Text + "','" + txtQty.Text + "','" + txtPrice.Text + "')";
                     SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
                     DataTable dtbl = new DataTable();
@@ -92,7 +96,8 @@ namespace CleverPoppy
         {
             lblError.Text = "";
             lblOk.Text = "";
-            SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30");
+            SqlConnection sqlcon = new SqlConnection(conn);
+            //SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30");
             string query = "Select code,name from Stock where code='"+txtCode.Text+"' and name='"+txtName.Text.Trim()+"'";
             SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
 

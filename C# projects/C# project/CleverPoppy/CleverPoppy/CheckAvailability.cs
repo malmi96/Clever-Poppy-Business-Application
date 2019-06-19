@@ -17,6 +17,8 @@ namespace CleverPoppy
         {
             InitializeComponent();
         }
+        string conn = dbClass.getString();
+        //string conn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30";
         public void ClearData()
         {
             txtCode.Clear();
@@ -30,8 +32,8 @@ namespace CleverPoppy
         private void btnSearch_Click(object sender, EventArgs e)
         {
             lblError.Text = "";
-
-            SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30");
+            SqlConnection sqlcon = new SqlConnection(conn);
+            //SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30");
             sqlcon.Open();
             String query = "Select name,quantitiy,unitPrice from Stock where code='" + txtCode.Text + "' or name = '"+txtName.Text+"'";
             SqlCommand cmd = new SqlCommand(query, sqlcon);
