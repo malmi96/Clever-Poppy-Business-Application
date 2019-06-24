@@ -61,3 +61,4 @@ E:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.csproj.C
 E:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.csproj.CopyComplete
 E:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.exe
 E:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.pdb
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.splashScreen.resources

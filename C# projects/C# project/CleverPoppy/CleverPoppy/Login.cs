@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Threading;
 
 namespace CleverPoppy
 {
@@ -15,9 +16,12 @@ namespace CleverPoppy
     {
         public Login()
         {
+            
             InitializeComponent();
+            
             txtPwd.PasswordChar = '•';
         }
+       
         string conn = dbClass.getString();
         //string conn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30";
 
@@ -53,6 +57,11 @@ namespace CleverPoppy
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Login_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
